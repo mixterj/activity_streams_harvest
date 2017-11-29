@@ -80,7 +80,7 @@ function handleResponse(req, res, error, response) {
         }
         else {
           var total = response.count;
-          var last = Number(total) / Number(500);
+          var last = Number(total) / Number(5000);
         	  var jsonld = {};
         	  jsonld['@context'] = [];
         	  jsonld['@context'].push('http://iiif.io/api/presentation/3/context.json');
@@ -173,7 +173,7 @@ app.get('/:collection/:id?', function (req, res) {
 	        	   if (req.params.id){
 	        		  console.log('there is an id');
 	        		  query = "*";
-	        		  var sizeNum = 500;
+	        		  var sizeNum = 5000;
 	        	      var requestPage = req.params.id; 		  
 	        		  // build query
 	        		  bodyObject = {};
