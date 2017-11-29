@@ -37,7 +37,7 @@ if ('development' === app.get('env')) {
 
 // callback function for all responses
 function sendResponse(res,obj) {
-  console.log('got to send')
+  //console.log('got to send')
   res.writeHead(obj.status, { "Content-Type": obj.contentType });
   res.write(obj.json);
   res.end();
@@ -45,7 +45,7 @@ function sendResponse(res,obj) {
 
 //handle search engine response
 function handleResponse(req, res, error, response) {
-	console.log('handler req ' + req);
+	//console.log('handler req ' + req);
     if (error){
         errorObject.json = "{ \"error\": "+JSON.stringify(error)+" }";
         sendResponse(res,errorObject);
@@ -114,16 +114,16 @@ function doPagingSearch(req, res, obj, requestPage) {
 	var currentPage = 0;
     client.search(obj,function getRightPage(error, response, status) {
     	currentPage += 1;
-    	console.log('requested page ' + requestPage);
-    	console.log('curent page ' + currentPage);
+    	//console.log('requested page ' + requestPage);
+    	//console.log('curent page ' + currentPage);
     	if (requestPage != currentPage) {
-    		console.log('still in search loop');
+    		//console.log('still in search loop');
     		client.scroll({
     		      scrollId: response._scroll_id,
     		      scroll: '10s'
     		    }, getRightPage);
     		  } else {
-    			console.log('should be done');
+    			//console.log('should be done');
     			//console.log(response);
     		    	handleResponse(req, res,error, response);
     		  }
@@ -161,17 +161,17 @@ app.all('/*', function(req, res, next) {
 // handle GET request patterns
 app.get('/:collection/:id?', function (req, res) {
 	        const params = req.params;
-	        console.log(req.params.collection);
-	        console.log(req.params.id);
+	        //console.log(req.params.collection);
+	        //console.log(req.params.id);
             var sizeNum = 500;
          
             // get result starting position
             var fromNum = 0;
             
             if (req.params.collection === "activity-streams"){
-        	        console.log('collection is right')
+        	        //console.log('collection is right')
 	        	   if (req.params.id){
-	        		  console.log('there is an id');
+	        		  //console.log('there is an id');
 	        		  query = "*";
 	        		  var sizeNum = 5000;
 	        	      var requestPage = req.params.id; 		  
@@ -194,7 +194,7 @@ app.get('/:collection/:id?', function (req, res) {
 	                }, requestPage);
 	        		  
 	        	  }  else  {
-	              console.log('in else')
+	              //console.log('in else')
 	        		  doCount(req, res,{  
 	              	  index: config.indexName,
 	                  type: config.docType
@@ -207,7 +207,7 @@ app.get('/:collection/:id?', function (req, res) {
 
 //If no route is matched by now, it must be an invalid request
 app.use(function(req, res) {
-	console.log('failed here')
+	//console.log('failed here')
   sendResponse(res,config.errorObject["400"]);
 });
 
