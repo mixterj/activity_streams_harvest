@@ -1,0 +1,13 @@
+{
+  "name": "activity_streams_harvest",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "elasticsearch": "^14.0.0",
+    "express": "3.2.6",
+    "jade": "*"
+  }
+}
