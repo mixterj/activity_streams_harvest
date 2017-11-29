@@ -69,7 +69,7 @@ function handleResponse(req, res, error, response) {
 	        	    var nextPage = Number(req.params.id) + Number(1);
 	        		jsonld['next'] = {};
         	        jsonld['next']['type'] = 'CollectionPage';
-        	        jsonld['next']['id'] = 'http://52.204.112.237:3051/activity-stream/' + nextPage;
+        	        jsonld['next']['id'] = 'http://52.204.112.237:3051/activity-streams/' + nextPage;
 	        }
 	        if (req.params.id > 1){
 	        	var previousPage = Number(req.params.id) - Number(1);
