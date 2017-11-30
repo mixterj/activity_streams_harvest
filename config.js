@@ -25,11 +25,11 @@ config.contentTypes.jsonld = "application/ld+json";
 //config.action.paging = true;
 //config.action.count = true;
 
-config.index = {};
+//config.index = {};
 
-config.index.activity_streams = {};
-config.index.activity_streams.multi_match = {};
-config.index.activity_streams.multi_match.searchType = "phrase_prefix";
+//config.index.activity_streams = {};
+//config.index.activity_streams.multi_match = {};
+//config.index.activity_streams.multi_match.searchType = "phrase_prefix";
 
 config.cacheControl = 'public, max-age=86400';
 
