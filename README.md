@@ -18,10 +18,14 @@ This is a proof of concept and provided 'as is'.
 * [ElasticSearch](https://www.elastic.co/products/elasticsearch)
 
 ## Usage
+ ### ElasticSearch
+ * [Install ElasticSearch](https://www.elastic.co/downloads/elasticsearch)
+ * Use [this code](https://github.com/mixterj/iiif-activity-streams-creation) to create and load IIIF Activity Streams data 
+ 
  ### Express JS
-* Clone the Repository
-* Modify the config.js file for local setting
-* run `node harvest.js`
+ * Clone the Repository
+ * Modify the config.js file for local setting
+ * run `node harvest.js`
 
 ### Tools
 
