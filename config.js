@@ -1,28 +1,29 @@
 
 var config = {};
 
-//config.searchServer = "sanmateo-32.dev.oclc.org";
+// Set your ElasticSearch Server host
 config.searchServer = "localhost";
+// Set the port for ElasticSearch (default is 9200
 config.searchPort = 9200;
+// Set the port you want the ExpressJS server to run on
 config.appPort = 3051;
+// Set the name of the ElasticSearch Index
 config.indexName = 'activity_streams';
+// Set the ElasticSearch index Type name
 config.docType = 'activities';	
 
 config.httpStatus = "200";
 config.contentTypes = {};
 config.contentTypes.json = "application/json";
 config.contentTypes.jsonld = "application/ld+json";
-config.contentTypes.plain = "text/plain";
-config.contentTypes.html = "text/html";
-config.contentTypes.octetstream = "application/octet-stream";
 
-config.action = {};
-config.action.range_search = true;
-config.action.search = true;
-config.action.get = true;
-config.action.aggregate = true;
-config.action.paging = true;
-config.action.count = true;
+//config.action = {};
+//config.action.range_search = true;
+//config.action.search = true;
+//config.action.get = true;
+//config.action.aggregate = true;
+//config.action.paging = true;
+//config.action.count = true;
 
 config.index = {};
 
