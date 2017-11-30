@@ -14,8 +14,9 @@ This is a proof of concept and provided 'as is'.
 
 ## Usage
 
-* test
-* test 2
+* Clone the Repository
+* Modify the config.js file to set
+** Index Name
 
 ### Tools
 
