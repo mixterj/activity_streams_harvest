@@ -24,6 +24,7 @@ This is a proof of concept and provided 'as is'.
  
  ### Express JS
  * Clone the Repository
+ * Navigate to the parent directory and run `npm install`. This will download all of the code dependencies
  * Modify the config.js file for local setting
  * run `node harvest.js`
 
