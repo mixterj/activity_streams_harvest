@@ -1,16 +1,16 @@
 
 
-# activity_streams_harvest
+# Activity Stream Harvestor
 
 
 
 ## Usage
 
-
+Used to harvest [IIIF](http://iiif.io/) [Activity Streams](https://www.w3.org/TR/activitystreams-core/) data data stored in an [ElasticSearch](https://www.elastic.co/products/elasticsearch) index.
 
 ## Developing
 
-
+This is a proof of concept and provided 'as is'.
 
 ### Tools
 
