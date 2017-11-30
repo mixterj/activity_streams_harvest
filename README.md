@@ -14,7 +14,6 @@ This is a proof of concept and provided 'as is'.
 
 ## Prerequisites
 * [Node JS](https://nodejs.org/en/)
-* [Express JS](https://expressjs.com/)
 * [ElasticSearch](https://www.elastic.co/products/elasticsearch)
 
 ## Usage
