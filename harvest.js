@@ -58,23 +58,23 @@ function handleResponse(req, res, error, response) {
         obj.status = "200";
         if (req.params.id){
 	        var jsonld = {};
-	        jsonld['@context'] = ["https://www.w3.org/ns/activitystreams", "http://iiif.io/api/presentation/2/context.json"];
+	        jsonld['@context'] = ["http://iiif.io/api/presentation/2/context.json", "https://www.w3.org/ns/activitystreams"];
 	        jsonld['id'] = 'http://52.204.112.237:3051/activity-streams/' + req.params.id;
-	        jsonld['type'] = 'CollectionPage';
-	        jsonld.items = [];
+	        jsonld['type'] = 'OrderedCollectionPage';
+	        jsonld.orderedItems = [];
 	        response.hits.hits.map(function(hit){
-	        	        jsonld.items.push(hit._source);
+	        	        jsonld.orderedItems.push(hit._source);
 	            });
 	        if (response.hits.hits.length === 5000){
 	        	    var nextPage = Number(req.params.id) + Number(1);
 	        		jsonld['next'] = {};
-        	        jsonld['next']['type'] = 'CollectionPage';
+        	        jsonld['next']['type'] = 'OrderedCollectionPage';
         	        jsonld['next']['id'] = 'http://52.204.112.237:3051/activity-streams/' + nextPage;
 	        }
 	        if (req.params.id > 1){
 	        	var previousPage = Number(req.params.id) - Number(1);
 	        	jsonld['previous'] = {};
-	        	jsonld['previous']['type'] = 'CollectionPage';
+	        	jsonld['previous']['type'] = 'OrderedCollectionPage';
 	        	jsonld['previous']['id'] = 'http://52.204.112.237:3051/activity-streams/' + previousPage;
 	        }
         }
@@ -82,26 +82,25 @@ function handleResponse(req, res, error, response) {
           var total = response.count;
           var last = Number(total) / Number(5000);
         	  var jsonld = {};
-        	  jsonld['@context'] = [];
-        	  jsonld['@context'].push('http://iiif.io/api/presentation/3/context.json');
-        	  jsonld['@context'].push('https://www.w3.org/ns/activitystreams');
+        	  jsonld['@context'] = ["http://iiif.io/api/presentation/2/context.json", "https://www.w3.org/ns/activitystreams"];
         	  jsonld['id'] = 'http://52.204.112.237:3051/activity-streams/';
-        	  jsonld['type'] = 'Collection';
+        	  //jsonld['totalItems'] = Number(total)
+        	  jsonld['type'] = 'OrderedCollection';
         	  jsonld['label'] = 'CONTENTdm IIIF Collections';
         	  jsonld['first'] = {};
         	  jsonld['first']['id'] = 'http://52.204.112.237:3051/activity-streams/1';
-        	  jsonld['first']['type'] = 'CollectionPage';
+        	  jsonld['first']['type'] = 'OrderedCollectionPage';
         	  if (last % 1 != 0){
                   var lastPage = Math.floor(last + 1);
                   jsonld['last'] = {};
                   jsonld['last']['id'] = 'http://52.204.112.237:3051/activity-streams/'+lastPage;
-                  jsonld['last']['type'] = 'CollectionPage';
+                  jsonld['last']['type'] = 'OrderedCollectionPage';
               }
               else{
                   var lastPage = Math.floor(last);
                   jsonld['last'] = {};
                   jsonld['last']['id'] = 'http://52.204.112.237:3051/activity-streams/'+last;
-                  jsonld['last']['type'] = 'CollectionPage'; 
+                  jsonld['last']['type'] = 'OrderedCollectionPage'; 
               }
         }
         	
