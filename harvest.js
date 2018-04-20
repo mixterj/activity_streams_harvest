@@ -168,7 +168,7 @@ app.get('/:collection/:id?', function (req, res) {
             // get result starting position
             var fromNum = 0;
             
-            if (req.params.collection === "activity-streams"){
+            if (req.params.collection === "activity-streams"||"activity-streams/"){
         	        //console.log('collection is right')
 	        	   if (req.params.id){
 	        		  //console.log('there is an id');
