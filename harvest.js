@@ -61,6 +61,7 @@ function handleResponse(req, res, error, response) {
 	        jsonld['@context'] = ["http://iiif.io/api/presentation/2/context.json", "https://www.w3.org/ns/activitystreams"];
 	        jsonld['id'] = 'http://52.204.112.237:3051/activity-streams/' + req.params.id;
 	        jsonld['type'] = 'OrderedCollectionPage';
+	        jsonld['partOf'] = 'http://52.204.112.237:3051/activity-streams/';
 	        jsonld.orderedItems = [];
 	        response.hits.hits.map(function(hit){
 	        	        jsonld.orderedItems.push(hit._source);
@@ -73,9 +74,9 @@ function handleResponse(req, res, error, response) {
 	        }
 	        if (req.params.id > 1){
 	        	var previousPage = Number(req.params.id) - Number(1);
-	        	jsonld['previous'] = {};
-	        	jsonld['previous']['type'] = 'OrderedCollectionPage';
-	        	jsonld['previous']['id'] = 'http://52.204.112.237:3051/activity-streams/' + previousPage;
+	        	jsonld['prev'] = {};
+	        	jsonld['prev']['type'] = 'OrderedCollectionPage';
+	        	jsonld['prev']['id'] = 'http://52.204.112.237:3051/activity-streams/' + previousPage;
 	        }
         }
         else {
@@ -84,7 +85,7 @@ function handleResponse(req, res, error, response) {
         	  var jsonld = {};
         	  jsonld['@context'] = ["http://iiif.io/api/presentation/2/context.json", "https://www.w3.org/ns/activitystreams"];
         	  jsonld['id'] = 'http://52.204.112.237:3051/activity-streams/';
-        	  //jsonld['totalItems'] = Number(total)
+        	  jsonld['totalItems'] = Number(total)
         	  jsonld['type'] = 'OrderedCollection';
         	  jsonld['label'] = 'CONTENTdm IIIF Collections';
         	  jsonld['first'] = {};
@@ -181,6 +182,9 @@ app.get('/:collection/:id?', function (req, res) {
 	              bodyObject.query.function_score.query = {};
 	              bodyObject.query.function_score.query.query_string = {};
 	              bodyObject.query.function_score.query.query_string.query = query;
+	              bodyObject.sort = {};
+	              bodyObject.sort.endTime = {};
+	              bodyObject.sort.endTime.order = "asc";
 	              bodyObject.size = sizeNum;
 	              //console.log(JSON.stringify(bodyObject))
 	        		  
