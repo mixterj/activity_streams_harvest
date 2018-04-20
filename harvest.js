@@ -205,6 +205,9 @@ app.get('/:collection/:id?', function (req, res) {
 	      
 	        }
         }
+        else{
+        	sendResponse(res,config.errorObject["400"]);
+        }
   
 });
 
